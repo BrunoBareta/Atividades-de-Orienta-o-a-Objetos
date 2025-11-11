@@ -1,4 +1,4 @@
-// -------------------- INTERFACE MEIO DE PAGAMENTO --------------------
+// INTERFACE MEIO DE PAGAMENTO
 // A interface obriga todas as classes de métodos de pagamento a terem o método processarPagamento.
 // Isso garante que mesmo sendo diferentes meios, todos funcionem com a mesma "assinatura" de função.
 interface MeioPagamento {
@@ -6,7 +6,7 @@ interface MeioPagamento {
 }
 
 
-// -------------------- CLASSE CONTA BANCÁRIA --------------------
+//  CLASSE CONTA BANCÁRIA 
 // Essa classe representa uma conta real: tem saldo, histórico e não permite acesso direto a saldo (encapsulamento).
 class ContaBancaria {
   private saldo: number; // Valor protegido, só pode ser alterado internamente
@@ -53,7 +53,7 @@ class ContaBancaria {
 }
 
 
-// -------------------- CLASSE CARTÃO DE CRÉDITO --------------------
+// CLASSE CARTÃO DE CRÉDITO 
 // Cartão de crédito tem limite, logo precisamos de um atributo exclusivo
 class CartaoCredito implements MeioPagamento {
   private limite: number;
@@ -75,7 +75,7 @@ class CartaoCredito implements MeioPagamento {
 }
 
 
-// -------------------- CLASSE CARTÃO DE DÉBITO --------------------
+// CLASSE CARTÃO DE DÉBITO
 class CartaoDebito implements MeioPagamento {
   processarPagamento(valor: number, conta: ContaBancaria): boolean {
     if (conta.descontar(valor)) {
@@ -89,7 +89,7 @@ class CartaoDebito implements MeioPagamento {
 }
 
 
-// -------------------- CLASSE BOLETO BANCÁRIO --------------------
+//  CLASSE BOLETO BANCÁRIO 
 class BoletoBancario implements MeioPagamento {
   processarPagamento(valor: number, conta: ContaBancaria): boolean {
     console.log(`Boleto de R$${valor} gerado para ${conta.getTitular()}. Aguardando pagamento`);
@@ -98,7 +98,7 @@ class BoletoBancario implements MeioPagamento {
 }
 
 
-// -------------------- CLASSE PIX --------------------
+// CLASSE PIX 
 class Pix implements MeioPagamento {
   processarPagamento(valor: number, conta: ContaBancaria): boolean {
     if (conta.descontar(valor)) {
@@ -112,20 +112,20 @@ class Pix implements MeioPagamento {
 }
 
 
-// -------------------- INSTÂNCIAS DE CONTAS --------------------
+// INSTÂNCIAS DE CONTAS 
 const conta1 = new ContaBancaria("Bruno", 1000);
 const conta2 = new ContaBancaria("Ana", 500);
 const conta3 = new ContaBancaria("Carlos", 1500);
 const conta4 = new ContaBancaria("Fernanda", 200);
 
-// -------------------- MÉTODOS DE PAGAMENTO --------------------
+// MÉTODOS DE PAGAMENTO 
 const credito = new CartaoCredito(800);
 const debito = new CartaoDebito();
 const boleto = new BoletoBancario();
 const pix = new Pix();
 
 
-// -------------------- SIMULAÇÃO --------------------
+//  SIMULAÇÃO 
 // Operações em várias contas mostrando validação e histórico
 
 credito.processarPagamento(300, conta1);
@@ -142,7 +142,7 @@ debito.processarPagamento(150, conta4);
 pix.processarPagamento(100, conta4);
 
 
-// -------------------- HISTÓRICO FINAL --------------------
+// HISTÓRICO FINAL 
 conta1.mostrarHistorico();
 conta2.mostrarHistorico();
 conta3.mostrarHistorico();
@@ -151,7 +151,7 @@ conta4.mostrarHistorico();
 
 
 
-// EXPLICAÇÃO DO CÓDIGO --------------------
+// EXPLICAÇÃO DO CÓDIGO 
 // Esse código simula um sistema de pagamento. Foi criado uma interface chamada MeioPagamento que obriga
 // todos os métodos de pagamento a terem a função processarPagamento. Isso garante que todos funcionem
 // de forma padronizada.

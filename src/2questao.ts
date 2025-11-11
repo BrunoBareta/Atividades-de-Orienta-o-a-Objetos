@@ -1,4 +1,4 @@
-// -------------------- CLASSE FUNCIONÁRIO (ABSTRATA) --------------------
+// CLASSE FUNCIONÁRIO (ABSTRATA) 
 // Essa classe é abstrata porque ela serve apenas como modelo para outras classes.
 // Ela define atributos e um método que as classes filhas devem implementar.
 abstract class Funcionario {
@@ -17,7 +17,7 @@ abstract class Funcionario {
 }
 
 
-// -------------------- CLASSE GERENTE --------------------
+// CLASSE GERENTE 
 // Herdando da classe Funcionario.
 // O gerente recebe bonus fixo de 20%.
 class Gerente extends Funcionario {
@@ -28,7 +28,7 @@ class Gerente extends Funcionario {
 }
 
 
-// -------------------- CLASSE DESENVOLVEDOR --------------------
+// CLASSE DESENVOLVEDOR 
 // Herdando da classe Funcionario.
 // O desenvolvedor recebe 10% por projeto entregue.
 // Aqui adicionamos o atributo projetosEntregues.
@@ -47,7 +47,7 @@ class Desenvolvedor extends Funcionario {
 }
 
 
-// -------------------- CLASSE ESTAGIÁRIO --------------------
+// CLASSE ESTAGIÁRIO 
 // Herdando da classe Funcionario.
 // O estagiário recebe salário fixo, sem bônus.
 class Estagiario extends Funcionario {
@@ -57,7 +57,7 @@ class Estagiario extends Funcionario {
 }
 
 
-// -------------------- INSTÂNCIAS DOS FUNCIONÁRIOS --------------------
+// INSTÂNCIAS DOS FUNCIONÁRIOS 
 
 // Criando 4 Gerentes
 const g1 = new Gerente("Carlos", "G001", 8000);
@@ -78,7 +78,7 @@ const e3 = new Estagiario("Paulo", "E003", 1300);
 const e4 = new Estagiario("Mariana", "E004", 1600);
 
 
-// -------------------- LISTA POLIMÓRFICA --------------------
+// LISTA POLIMÓRFICA 
 // Aqui temos uma única lista do tipo Funcionario, mas com objetos de tipos diferentes.
 // Isso mostra o polimorfismo: a mesma referência se comportando de formas diferentes.
 const funcionarios: Funcionario[] = [
@@ -88,7 +88,7 @@ const funcionarios: Funcionario[] = [
 ];
 
 
-// -------------------- SIMULAÇÃO --------------------
+// SIMULAÇÃO 
 // Percorre a lista e calcula o salário de cada funcionário.
 // O método calcularSalario será chamado conforme o tipo real do objeto.
 for (const funcionario of funcionarios) {
