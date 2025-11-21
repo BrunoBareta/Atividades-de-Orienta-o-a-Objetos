@@ -75,6 +75,7 @@ class Membro {
     const index = this.livrosEmprestados.indexOf(livro);
 
     if (index !== -1) { // Se o livro foi encontrado
+      
       this.livrosEmprestados.splice(index, 1); // Remove da lista
       livro.devolver(); // Marca o livro como devolvido
       console.log(`${this.nome} devolveu "${livro.titulo}"`);
